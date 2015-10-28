@@ -1,0 +1,162 @@
+﻿@model IEnumerable<Int.MobileUI.Models.CustomerListModel>
+@{
+    if (Model != null) { var tempList = Model.ToList(); }
+}
+<style>
+    table tbody tr.even.selected {
+        background-color: #00ffff;
+    }
+
+    table tbody tr.odd.selected {
+        background-color: #00ffff;
+    }
+</style>
+
+<div class="page-content">
+    <div class="page-header">
+        <button class="btn btn-app btn-light btn-xs">
+            <i class="icon-tag bigger-160"></i>
+            客户列表
+        </button>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="table-responsive">
+                <table id="customer-table" class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>客户编号</th>
+                            <th>名称</th>
+                            <th>性别</th>
+                            <th>年龄</th>
+                            <th>地址</th>
+                            <th>联系电话</th>
+                            <th>邮件</th>
+                        </tr>
+                    </thead>
+
+                    <tbody></tbody>
+                </table>
+                <a href="#modal-table" role="button" class="green" data-toggle="modal"> <i class="icon-edit"></i>修改客户信息</a>
+            </div>
+            <div id="modal-table" class="modal fade" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header no-padding">
+                            <div class="table-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    <span class="white">&times;</span>
+                                </button>
+                                &nbsp;
+                            </div>
+                        </div>
+
+                        <div class="modal-body no-padding">
+                            <div class="form-group">
+                                <input hidden type="text" id="Cuscode" name="Cuscode" />
+                                <label class="col-sm-1 control-label no-padding-right" for="Name">名称</label>
+                                <input class="input-sm" type="text" id="Name" name="Name" />
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="Gender">性别</label>
+                                <input class="input-sm" type="text" id="Gender" name="Gender" />
+                                <label class="col-sm-1 control-label no-padding-right" for="Age">年龄</label>
+                                <input class="input-sm" type="text" id="Age" name="Age" />
+                            </div>
+                            <label class="col-sm-1 control-label no-padding-right" for="Address">地址</label>
+                            <input class="input-sm" type="text" id="Address" name="Address" />
+                            <label class="col-sm-1 control-label no-padding-right" for="PhoneNo">联系电话</label>
+                            <input class="input-sm" type="text" id="PhoneNo" name="PhoneNo" />
+                            <label class="col-sm-1 control-label no-padding-right" for="Email">邮件</label>
+                            <input class="input-sm" type="text" id="Email" name="Email" />
+                            <input hidden type="text" />
+                        </div>
+
+                        <div class="modal-footer no-margin-top">
+                            <button class="btn"><i class="icon-arrow-right icon-on-right">确定</i></button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- PAGE CONTENT ENDS -->
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script src="/assets/js/bootstrap-tag.min.js"></script>
+<script src="/assets/js/jquery.dataTables.min.js"></script>
+<script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
+<script src="/assets/js/lokijs.min.js"></script>
+<script type="text/javascript">
+    $(function ($) {
+        var lokitDb = new loki('thirdLokiDB');
+        var customerT = lokitDb.addCollection('customer', ['cuscode'], true);
+        var initCustomer = function (CRTABLE) {
+            CRTABLE.insert({ cuscode: 701, name: 'Bigdata in biz', gender: 'Male', age: 25, address: 'shenzhen', phoneNo: '123456789',email:'228632687@qq.com' });
+            CRTABLE.insert({ cuscode: 702, name: 'Head Hunter', gender: 'Male', age: 25, address: 'shenzhen', phoneNo: '123456789' ,email:'log525lg100@gmail.com'});
+            CRTABLE.insert({ cuscode: 703, name: 'Eco', gender: 'Male', age: 25, address: 'shenzhen', phoneNo: '123456789' ,email:'log525lg100@aliyun.com'});
+            CRTABLE.insert({ cuscode: 704, name: '电商', gender: 'Female', age: 25, address: 'shenzhen', phoneNo: '123456789',email:'renault194@hotmail.com' });
+            CRTABLE.insert({ cuscode: 705, name: '微商', gender: 'Female', age: 29, address: 'shenzhen', phoneNo: '123456789', email: 'hche3131@uni.sydney.edu.eu' });
+            CRTABLE.insert({ cuscode: 706, name: '数据挖掘', gender: 'Female', age: 29, address: 'shenzhen', phoneNo: '123456789', email: 'barry@qhfinance.org' });
+            CRTABLE.insert({ cuscode: 707, name: '线上运营', gender: 'Female', age: 29, address: 'shenzhen', phoneNo: '123456789', email: '13825259516@139.com' });
+        };
+        var customerTViewInit = function () {
+            var oTable1 = $('#customer-table').dataTable({
+                "bStateSave": true, "bProcessing": true, "bRetrieve": true,
+                "aoColumns": [{ "bSortable": false }, { "bSortable": true }, { "bSortable": false }, { "bSortable": true}, { "bSortable": false }, { "bSortable": false }, { "bSortable": false }],
+                "oLanguage": { sEmptyTable: '暂无客户', sInfo: '', sZeroRecords: '', sInfoEmpty: '', sInfoFiltered: '', sSearch: '查找:', "sLengthMenu": "显示 _MENU_ 记录" },
+                "aLengthMenu": [5, 10]
+            });
+            return oTable1;
+        };
+        var loadDataIntoTableView = function (CRTABLE, callbackF) {
+            var objs = CRTABLE.data;
+            var objTbody = $($('#customer-table').children()[1]);
+            for (oneobj in objs) {
+                objTbody.append('<tr><td>' + objs[oneobj].cuscode + '</td><td><a href="#">' + objs[oneobj].name + '</a></td><td>' + objs[oneobj].gender
+                    + '</td><td>' + objs[oneobj].age + '</td><td>' + objs[oneobj].address + '</td><td>' + objs[oneobj].phoneNo +'</td><td>'
+                    + objs[oneobj].email +'</td></tr>');
+            }
+            var rdTable = callbackF();
+            return rdTable;
+        };
+        initCustomer(customerT);
+        var customerTView = loadDataIntoTableView(customerT, customerTViewInit);
+        $(customerTView.children()[1]).on('click', 'tr', function () {
+            if ($(this).hasClass('selected')) { $(this).toggleClass('selected'); }
+            else { customerTView.$('tr.selected').removeClass('selected'); $(this).toggleClass('selected'); }
+        });
+        $(customerTView.parent().parent()[0]).children().each(function (i, e) {
+            if (i > 0) {
+                if (i === 1) {
+                    $(e).on('click', function () {
+                        var editC = customerTView.$('tr.selected');
+                        if (editC.length === 0) { alert('选择一个客户'); return false; }
+                        var values = new Array();
+                        $(editC[0].children).each(function (i, e) { values.push($(e).text()) });
+                        values.push(editC[0].rowIndex);
+                        $('#modal-table').find('input:text').each(function (i, e) { $(e).val(values[i]) });
+                    })
+                }
+            }
+        });
+        $('#modal-table').find('button.btn').each(function (i, e) {
+            if (i == 0) {
+                $(e).on('click', function () {
+                    var temp = $(this).parent().parent().find('input:text');
+                    jQuery.post('/Customer/ModifyCustomer', { cuscode: $(temp[0]).val(), name: $(temp[1]).val(), gender: $(temp[2]).val(), age: $(temp[3]).val(), address: $(temp[4]).val(), phoneNo: $(temp[5]).val(), email: $(temp[6]).val() }).success(function (rText, s) {
+                        if (rText.success) {
+                            customerT.findAndUpdate(function (obj) { return obj.cuscode == rText.Cuscode }, function (obj) { obj.name = rText.Name; obj.gender = rText.Gender; obj.age = rText.Age, obj.address = rText.Address; obj.phoneNo = rText.PhoneNo; obj.state = rText.Email; return obj });
+                            var onerow = $(customerTView.get(0).rows[$(temp[7]).val()])[0].children;
+                            for (var i = 1; i < onerow.length; i++) { $(onerow[i]).text($(temp[i]).val()); }
+                        } else { console.log(rText.errMesg); }
+                    });
+                });
+            }
+        });
+    })
+</script>
+}
+
+

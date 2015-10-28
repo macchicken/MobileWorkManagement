@@ -1,0 +1,44 @@
+﻿@charset "utf-8";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin:0; padding:0; }
+body { font:13px/14px "宋体", "微软雅黑", Segoe UI, Arial, sans-serif, serif; color:#6e6e6e; background-color: #faf9f9; }
+ul { list-style:none; }
+li { vertical-align:top; }
+select, button, input, textarea { font-size:12px; font-family:inherit; vertical-align:middle; line-height:normal; }
+input { outline:none; }
+button, input { border:0; }
+button { cursor:pointer; }
+img { vertical-align:middle; border:0; }
+a { text-decoration:none; color:#6e6e6e; }
+a:hover { color:#3b9de8; text-decoration:none; }
+em { font-style:normal; }
+.c { zoom:1; }
+.c:after { content:"."; display:block; height:0; clear:both; visibility:hidden; }
+.l { float:left; }
+.r { float:right; }
+.tac { text-align:center !important; }
+.tal { text-align:left !important; }
+.tar { text-align:right !important; }
+.db { display:block; }
+.clear { clear:both; }
+.current { cursor: default; }
+body { -webkit-text-size-adjust:none; }
+
+
+.top-nav {width:100%; height:100px; background-color:#005999; background:url(../content/header/topbg.jpg ) repeat-x left 0px;}
+/*------980px居中------*/
+.header{ width:1100px; margin:0 auto; }
+/*------头部导航菜单------*/
+.nomarr{ margin-right:0px !important;}
+
+.logo { float:left;width:225px; padding-top:20px;}
+.mune { width:680px; height:100px;float:left;  color:#bae2ff; }
+.mune ul li {  height:100px; width:85px;float:left; margin-left:5px; margin-right:5px;}
+.mune ul li  a { display:block;  font-size:12px;color:#bae2ff; text-align:center; width:85px; height:90px; vertical-align:middle; font-family:宋体; padding-top:10px; }
+.mune ul li  a:hover,.inhover{ background:url(../content/header/munebg.png ) no-repeat left 0px;display:block;height:100px; }
+.mune ul li  span {  font-size:12px; width:85px; height:30px; display:block; }
+.mune ul li  a em{ display:block;text-align:center; width:85px; height:60px; }
+.toplogin { float:right; width:195px; height:33px;padding-top:8px; padding-left:20px;color:#bae2ff; background:url(../content/header/toploginbg.png) no-repeat left 0px; font-size:12px; }
+.toplogin em{ float:left; width:105px; overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.toplogin a{color:#bae2ff; margin-left:20px;}
+.toplogin a:hover{ color:#CF0;}
+

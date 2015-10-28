@@ -1,0 +1,62 @@
+﻿<link rel="stylesheet" href="/assets/css/jquery-ui-1.10.3.custom.min.css" />
+<link rel="stylesheet" href="/assets/css/chosen.css" />
+<div class="widget-body">
+    <div class="widget-main">
+        <div id="fuelux-wizard" class="row-fluid" data-target="#step-container">
+            <ul class="wizard-steps">
+                <li data-target="#step1" class="active">
+                    <span class="step">1</span>
+                    <span class="title">合同情况</span>
+                </li>
+
+                <li data-target="#step2">
+                    <span class="step">2</span>
+                    <span class="title">管制表|项目合同</span>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="step-content row-fluid position-relative" id="step-container">
+            <div class="step-pane active" id="step1">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right">管制表</label>&nbsp;&nbsp;
+                    <button class="btn" id="tocontrolform" name="tocontrolform">
+                        管制表<i class="icon-arrow-right icon-on-right"></i>
+                    </button>
+                </div>
+                @*<div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right">任课老师</label>
+                    &nbsp;<input class="input-sm" type="text" id="Teacher" name="Teacher" value="Tony Field" readonly/>
+                </div>*@
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right">项目合同</label>&nbsp;&nbsp;
+                    <button class="btn" id="tocontract" name="tocontract">
+                        项目合同<i class="icon-arrow-right icon-on-right"></i>
+                    </button>
+                </div>
+                @*<div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right">课件时间</label>
+                    &nbsp;<input class="input-sm" type="text" id="CourseMatime" name="CourseMatime" value='2014-11-12' readonly/>
+                </div>*@
+            </div>
+            <div class="step-pane" id="step2">
+                <div>
+
+                </div>
+                <div style="display:none"></div>
+            </div>
+        </div>
+        <div class="row-fluid wizard-actions">
+            <button class="btn btn-prev">
+                <i class="icon-arrow-left"></i>
+                Prev
+            </button>
+            @*<button class="btn btn-success btn-next" data-last="Finish ">
+                Next
+                <i class="icon-arrow-right icon-on-right"></i>
+            </button>*@
+        </div>
+    </div><!-- /widget-main -->
+</div><!-- /widget-body -->
+

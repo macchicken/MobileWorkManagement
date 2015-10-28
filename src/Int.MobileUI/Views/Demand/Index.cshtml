@@ -1,0 +1,184 @@
+﻿<link rel="stylesheet" href="/assets/css/jquery-ui-1.10.3.custom.min.css" />
+<link rel="stylesheet" href="/assets/css/chosen.css" />
+<div class="widget-body">
+    <div class="widget-main">
+        <div id="fuelux-wizard" class="row-fluid" data-target="#step-container">
+            <ul class="wizard-steps">
+                <li data-target="#step1" class="active">
+                    <span class="step">1</span>
+                    <span class="title">项目类型</span>
+                </li>
+
+                <li data-target="#step2">
+                    <span class="step">2</span>
+                    <span class="title">填写项目需求单</span>
+                </li>
+
+                <li data-target="#step3">
+                    <span class="step">3</span>
+                    <span class="title">完成提交项目需求单</span>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="step-content row-fluid position-relative" id="step-container">
+            <div class="step-pane active" id="step1">
+                <label for="ProjectType">项目类型</label>
+                <select class="width-35 chosen-select" id="ProjectType" name="ProjectType" data-placeholder="选择一个项目类型">
+                    <option value="T1">培训项目</option>
+                    <option value="T2">咨询项目</option>
+                </select>
+            </div>
+            <div class="step-pane" id="step2">
+            </div>
+            <div class="step-pane" id="step3">
+            </div>
+
+        </div>
+
+        <div class="row-fluid wizard-actions">
+            <button class="btn btn-prev">
+                <i class="icon-arrow-left"></i>
+                Prev
+            </button>
+
+            <button class="btn btn-success btn-next" data-last="Finish ">
+                Next
+                <i class="icon-arrow-right icon-on-right"></i>
+            </button>
+        </div>
+    </div><!-- /widget-main -->
+</div><!-- /widget-body -->
+
+@section Scripts{
+    <script src="/assets/js/fuelux/fuelux.wizard.min.js"></script>
+    <script src="/assets/js/bootstrap-tag.min.js"></script>
+    <script src="/assets/js/chosen.jquery.min.js"></script>
+    <script src="/assets/js/jquery.validate.min.js"></script>
+    <script src="/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            var projectValidate = function () {
+                return $("#projectRequire").validate({
+                    rules: {
+                        TrainingTarget: "required",
+                        NumOfPerson: {
+                            required: true,
+                            number: true
+                        },
+                        ReceivedTime: {
+                            required: true,
+                            dateISO: true
+                        },
+                        Days: {
+                            required: true,
+                            number: true
+                        }
+                    },
+                    messages: {
+                        TrainingTarget: "请输入培训对象",
+                        NumOfPerson: {
+                            required: "请输入培训人数",
+                            number: "请输入正确的数字"
+                        },
+                        ReceivedTime: {
+                            required: "请输入收到需求的时间",
+                            dateISO: "请输入收到需求的时间"
+                        },
+                        Days: {
+                            required: "请输入培训天数",
+                            number: "请输入正确的数字"
+                        }
+                    },
+                    errorPlacement: function (error, element) {
+                        if (element.hasClass("chosen-select")) {$('#' + element.attr("id") + 'Message').html(error);
+                        } else if (element.hasClass("input-sm")) {element.attr({ placeholder: error.text() });
+                        } else if (element.get(0) != null && element.get(0).nodeName == "INPUT") {$('#' + element.attr("id") + 'Message').html(error);
+                        }}
+                });};
+            var trainingInit = function () {
+                $(".chosen-select").chosen();
+                $('#document').ready(function () {
+                    $("#DecisionNo").click(function () {$("#Decision").removeAttr("checked");
+                    });
+                    $("#Decision").click(function () {$("#DecisionNo").removeAttr("checked");
+                    })
+                });
+                $('#document').tooltip({
+                    position: {
+                        my: "center bottom-20",
+                        at: "center top",
+                        using: function (position, feedback) {
+                            $(this).css(position);
+                            $("<div>").addClass(feedback.vertical).addClass(feedback.horizontal).appendTo(this);}}});}
+            var consultValidate = function () {
+                return $("#consultProject").validate({
+                    rules: {
+                        Rname: "required",
+                        Area:"required",
+                        RTelephone: {
+                            required: true,
+                            number:true
+                        },
+                        REmail: {
+                            required: true,
+                            email:true
+                        },
+                        CusBank: "required"
+                    },
+                    messages: {
+                        Rname: "请填写需求人姓名",
+                        Area: "请填写所属区域",
+                        RTelephone: "请填写联系电话",
+                        REmail: "请填写公司邮箱",
+                        CusBank: "请填写银行(或其他机构)"
+                    },
+                    errorPlacement: function (error, element) {
+                        if (element.hasClass("chosen-select")) {
+                            $('#' + element.attr("id") + 'Message').html(error);
+                        } else if (element.hasClass("input-sm")) {
+                            element.attr({ placeholder: error.text() });
+                        } else if (element.get(0) != null && element.get(0).nodeName == "INPUT") {
+                            $('#' + element.attr("id") + 'Message').html(error);
+                        }
+                    }
+                });
+            };
+            var consultInit = function () {
+                $(".chosen-select").chosen();
+                $('#document').ready(function () {
+                })};
+            $(".chosen-select").chosen();
+            $('#fuelux-wizard').ace_wizard().on('stepclick', function (e) {
+                //return false;//prevent clicking on steps
+            }).on('change', function (e, info) {
+                if (info.step == 1) {//action of step1
+                    if ($('#ProjectType').get(0).value == "T1") {$("#step2").load('/Demand/Training', null, trainingInit);
+                    } else {$("#step2").load('/Demand/Consult', null, consultInit);}
+                } else if (info.step == 2) {//action of step2
+                    if (info.direction == "next") {//the actual submit for step2
+                        console.log($('#ProjectType').get(0).value);
+                        if ($('#ProjectType').get(0).value == "T1" && $("#projectRequire") != null) {
+                            var validResult = projectValidate();
+                            if (validResult != null && !validResult.form()) {
+                                console.log(validResult); validResult.focusInvalid();
+                                return false;//stay in the current step if not submitted
+                            } else {jQuery.post('/Demand/TrainingCreated', $("#projectRequire").serialize())
+                                .success(function (responseText, status) {
+                                    $('#step3').text(responseText.errorMsg + ' 项目编号: ' + responseText.ProjectId);});}
+                        } else if ($('#ProjectType').get(0).value == "T2" && $("#consultProject") != null) {
+                            var validResult = consultValidate();
+                            if (validResult != null && !validResult.form()) { console.log(validResult); validResult.focusInvalid(); return false; }
+                            else {
+                                jQuery.post('/Demand/ConsultCreated', $("#consultProject").serialize())
+                                .success(function (responseText, status) {
+                                    $('#step3').text(responseText.errorMsg + ' 项目编号: ' + responseText.ProjectId);
+                                });}
+                        }}
+                } else if (info.step == 3) {//action of step3
+                }});
+        });
+    </script>
+}

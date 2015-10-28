@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Int.MobileUI.Models.AssessmentListModel>
+@{
+    var tempList3 = Model.ToList();
+}
+
+<link rel="stylesheet" href="/assets/css/jquery-ui-1.10.3.custom.min.css" />
+<style>
+    table tbody tr.even.selected {
+        background-color: #00ffff;
+    }
+
+    table tbody tr.odd.selected {
+        background-color: #00ffff;
+    }
+</style>
+
+<div class="row">
+        <div class="col-xs-12">
+            <div class="table-responsive">
+                <table id="assessment-table-2" class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th hidden>编号</th>
+                            <th>时间</th>
+                            <th>种类</th>
+                            <th>名称</th>
+                            <th>评分</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if (tempList3 != null && tempList3.Count != 0)
+                        {
+                            foreach (var item in tempList3)
+                            {
+                                <tr>
+                                    <td hidden>@item.Order</td>
+                                    <td>@item.Time</td>
+                                    <td>@item.Type</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Score</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <a href="#modal-table" role="button" class="green" data-toggle="modal"> <i class="icon-edit"></i>修改评分</a>
+            </div>
+            <div id="modal-table" class="modal fade" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header no-padding">
+                            <div class="table-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    <span class="white">&times;</span>
+                                </button>
+                                &nbsp;
+                            </div>
+                        </div>
+
+                        <div class="modal-body no-padding">
+                            <div class="form-group">
+                                <input hidden type="text" id="Aorder" name="Aorder" />
+                                <label class="col-sm-1 control-label no-padding-right" for="ATime">时间</label>
+                                <input class="input-sm" type="text" id="ATime" name="ATime" readonly/>
+                                <label class="col-sm-1 control-label no-padding-right" for="AType">种类</label>
+                                <input class="input-sm" type="text" id="AType" name="AType" readonly/>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="AName">名称</label>
+                                <input class="input-sm" type="text" id="AName" name="AName" readonly/>
+                                <label class="col-sm-1 control-label no-padding-right" for="AScore">评分</label>
+                                <input class="input-sm" type="text" id="AScore" name="AScore" />
+                            </div>
+                            <input hidden type="text" />
+                        </div>
+
+                        <div class="modal-footer no-margin-top">
+                            <button class="btn" id="amodify" name="amodify">
+                                <i class="icon-arrow-right icon-on-right">修改</i>
+                            </button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- PAGE CONTENT ENDS -->
+        </div>
+    </div>

@@ -1,0 +1,204 @@
+﻿@model IEnumerable<Int.MobileUI.Models.TeacherListModel>
+@{
+    if (Model != null) { var tempList = Model.ToList(); }
+}
+<style>
+    table tbody tr.even.selected{
+        background-color: #00ffff;
+    }
+    table tbody tr.odd.selected {
+        background-color: #00ffff;
+    }
+</style>
+
+<div class="page-content">
+    <div class="page-header">
+        <button class="btn btn-app btn-light btn-xs">
+            <i class="icon-tag bigger-160"></i>
+            师资列表
+        </button>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="table-responsive">
+                <table id="teacher-table-2" class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>姓名</th>
+                            <th>年龄</th>
+                            <th class="hidden-480">价格(¥)</th>
+                            <th>专业</th>
+                            <th class="hidden-480"><i class="icon-time bigger-110 hidden-480"></i>性别</th>
+                            <th>电话</th>
+                        </tr>
+                    </thead>
+
+                    <tbody></tbody>
+                </table>
+                <a href="#modal-table" role="button" class="green" data-toggle="modal"> <i class="icon-edit"></i>添加新的老师</a>
+                <a href="#modal-table-2" role="button" class="green" data-toggle="modal"> <i class="icon-edit"></i>修改老师信息</a>
+            </div>
+            <div id="modal-table" class="modal fade" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header no-padding">
+                            <div class="table-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    <span class="white">&times;</span>
+                                </button>
+                                &nbsp;
+                            </div>
+                        </div>
+
+                        <div class="modal-body no-padding">
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="Name">姓名</label>
+                                <input class="input-sm" type="text" id="Name" name="Name" />
+                                <label class="col-sm-1 control-label no-padding-right" for="Age">年龄</label>
+                                <input class="input-sm" type="text" id="Age" name="Age" />
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="Price">价格(¥)</label>
+                                <input class="input-sm" type="text" id="Price" name="Price" />
+                                <label class="col-sm-1 control-label no-padding-right" for="Specialty">专业</label>
+                                <input class="input-sm" type="text" id="Specialty" name="Specialty" />
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="Sex">性别</label>
+                                <input class="input-sm" type="text" id="Sex" name="Sex" />
+                                <label class="col-sm-1 control-label no-padding-right" for="Phone">电话</label>
+                                <input class="input-sm" type="text" id="Phone" name="Phone" />
+                            </div>
+                            </div>
+
+                        <div class="modal-footer no-margin-top">
+                            <button class="btn" id="addteach" name="addteach">
+                                <i class="icon-arrow-right icon-on-right">添加</i>
+                            </button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- PAGE CONTENT ENDS -->
+            <div id="modal-table-2" class="modal fade" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header no-padding">
+                            <div class="table-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    <span class="white">&times;</span>
+                                </button>
+                                &nbsp;
+                            </div>
+                        </div>
+
+                        <div class="modal-body no-padding">
+                            <div class="form-group">
+                                <input hidden type="text" id="Tcode" name="Tcode"/>
+                                <label class="col-sm-1 control-label no-padding-right" for="Name">姓名</label>
+                                <input class="input-sm" type="text" id="Name" name="Name" />
+                                <label class="col-sm-1 control-label no-padding-right" for="Age">年龄</label>
+                                <input class="input-sm" type="text" id="Age" name="Age" />
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="Price">价格(¥)</label>
+                                <input class="input-sm" type="text" id="Price" name="Price" />
+                                <label class="col-sm-1 control-label no-padding-right" for="Specialty">专业</label>
+                                <input class="input-sm" type="text" id="Specialty" name="Specialty" />
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="Sex">性别</label>
+                                <input class="input-sm" type="text" id="Sex" name="Sex" />
+                                <label class="col-sm-1 control-label no-padding-right" for="Phone">电话</label>
+                                <input class="input-sm" type="text" id="Phone" name="Phone" />
+                            </div>
+                                <input hidden type="text" />
+                            </div>
+
+                        <div class="modal-footer no-margin-top">
+                            <button class="btn" id="modifyteacher" name="modifyteacher">
+                                <i class="icon-arrow-right icon-on-right">确定</i>
+                            </button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- PAGE CONTENT ENDS -->
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script src="/assets/js/bootstrap-tag.min.js"></script>
+<script src="/assets/js/jquery.dataTables.min.js"></script>
+<script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
+<script src="/assets/js/lokijs.min.js"></script>
+<script type="text/javascript">
+    $(function ($) {
+        var lokitDb = new loki('firstLokiDB');
+        var usersTable = lokitDb.addCollection('teacher', ['tcode'], true);
+        var initTeachers = function (CRTABLE) {
+            CRTABLE.insert({ tcode: 501, name: 'Tony Field', age: 28,price:30000,specialty:'Businness',sex:'Male',phone:'13800000000' });
+            CRTABLE.insert({ tcode: 502, name: 'Magret', age: 35, price: 50000, specialty: 'Economy', sex: 'FeMale', phone: '13900000000' });
+            CRTABLE.insert({ tcode: 503, name: 'Lewis', age: 40, price: 40000, specialty: 'Consultant', sex: 'Male', phone: '13500000000' });
+            CRTABLE.insert({ tcode: 504, name: 'Liu', age: 29, price: 40000, specialty: 'E-Businness', sex: 'Male', phone: '13300000000' });
+            CRTABLE.insert({ tcode: 505, name: 'Miken', age: 30, price: 60000, specialty: 'E-Businness,Consultant', sex: 'FeMale', phone: '83659932' });
+            CRTABLE.insert({ tcode: 506, name: 'Ray Zhang', age: 25, price: 20000, specialty: 'Consultant', sex: 'Male', phone: '13600000000' });
+        };
+        var teacherTableInit = function () {
+            var oTable1 = $('#teacher-table-2').dataTable({"bStateSave":true,"bProcessing":true,"bRetrieve":true,
+                "aoColumns": [{ "bSortable": true }, { "bSortable": true }, null, null, null, { "bSortable": true }, { "bSortable": false }],
+                "oLanguage": { sEmptyTable:'暂无师资',sInfo: '', sZeroRecords: '', sInfoEmpty: '', sInfoFiltered: '', sSearch: '查找:', "sLengthMenu": "显示 _MENU_ 记录" },
+                "aLengthMenu": [5, 10]
+            });
+            return oTable1;
+        };
+        var loadDataIntoTableView = function (CRTABLE,callbackF) {
+            var teachers = CRTABLE.data;
+            var teaTbody=$($('#teacher-table-2').children()[1]);
+            for (tea in teachers) {
+                teaTbody.append('<tr><td>'+teachers[tea].tcode+'</td><td><a href="#">' + teachers[tea].name + '</a></td><td>' + teachers[tea].age
+                    + '</td><td class="hidden-480">' + teachers[tea].price + '</td><td>' + teachers[tea].specialty + '</td><td>' + teachers[tea].sex + '</td><td>'
+                    + teachers[tea].phone + '</td></tr>');
+            }
+            var rdTable = callbackF();
+            return rdTable;
+        }
+        initTeachers(usersTable);
+        var teacherTable = loadDataIntoTableView(usersTable, teacherTableInit);
+        $('#addteach').on('click', function () {
+            var temp = $(this).parent().parent().find('input:text');
+            jQuery.post('/Teacher/AddTea', { name: $(temp[0]).val(), age: $(temp[1]).val(), price: $(temp[2]).val(), specialty: $(temp[3]).val(), sex: $(temp[4]).val(), phone: $(temp[5]).val() }).success(function (rText, s) {
+                if (rText.success) {
+                    usersTable.insert({ tcode: (500+usersTable.maxId+1), name: rText.Name, age: rText.Age, price: rText.Price, specialty: rText.Specialty, sex: rText.Sex,phone:rText.Phone });
+                    teacherTable.fnAddData([500 + usersTable.maxId, rText.Name, rText.Age, rText.Price, rText.Specialty, rText.Sex, rText.Phone]);
+                    teacherTable.fnDraw();
+                }
+            })
+        });
+        $($('#teacher-table-2').children()[1]).on('click', 'tr', function () {
+            if ($(this).hasClass('selected')) { $(this).toggleClass('selected'); }
+            else { teacherTable.$('tr.selected').removeClass('selected'); $(this).toggleClass('selected'); }
+        });
+        $($('#teacher-table-2').parent().parent().children()[2]).on('click', function () {
+            var editC = teacherTable.$('tr.selected');
+            if (editC.length === 0) { alert('选择一位老师'); return false; }
+            var values = new Array();
+            $(editC[0].children).each(function (i, e) { values.push($(e).text()) });
+            values.push(editC[0].rowIndex);
+            $('#modal-table-2').find('input:text').each(function (i, e) { $(e).val(values[i]) });
+        });
+        $('#modifyteacher').on('click', function () {
+            var temp = $(this).parent().parent().find('input:text');
+            jQuery.post('/Teacher/ModifyTea', { tcode: $(temp[0]).val(), name: $(temp[1]).val(), age: $(temp[2]).val(), price: $(temp[3]).val(), specialty: $(temp[4]).val(), sex: $(temp[5]).val(), phone: $(temp[6]).val() }).success(function (rText, s) {
+                if (rText.success) {
+                    usersTable.findAndUpdate(function (obj) { return obj.tcode == rText.Tcode }, function (obj) { obj.name = rText.Name; obj.age = rText.Age; obj.price = rText.Price; obj.specialty = rText.Specialty; obj.sex = rText.Sex; obj.phone = rText.Phone; return obj });
+                    //console.log(usersTable.where(function (obj){ return obj.tcode == rText.Tcode }));
+                    var onerow = $(teacherTable.get(0).rows[$(temp[temp.length-1]).val()])[0].children;
+                    for (var i = 1; i < onerow.length; i++) { $(onerow[i]).text($(temp[i]).val());}
+                }
+            });
+        });
+    })
+</script>
+}

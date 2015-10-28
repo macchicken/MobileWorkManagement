@@ -1,0 +1,16 @@
+F:\Worspace\Int\src\Int.AC.Commands\bin\Debug\Int.AC.Commands.dll
+F:\Worspace\Int\src\Int.AC.Commands\bin\Debug\Int.AC.Commands.pdb
+F:\Worspace\Int\src\Int.AC.Commands\bin\Debug\ECommon.dll
+F:\Worspace\Int\src\Int.AC.Commands\bin\Debug\ENode.dll
+F:\Worspace\Int\src\Int.AC.Commands\bin\Debug\ENode.EQueue.dll
+F:\Worspace\Int\src\Int.AC.Commands\bin\Debug\EQueue.dll
+F:\Worspace\Int\src\Int.AC.Commands\bin\Debug\ECommon.pdb
+F:\Worspace\Int\src\Int.AC.Commands\bin\Debug\ECommon.xml
+F:\Worspace\Int\src\Int.AC.Commands\bin\Debug\ENode.pdb
+F:\Worspace\Int\src\Int.AC.Commands\bin\Debug\ENode.xml
+F:\Worspace\Int\src\Int.AC.Commands\bin\Debug\ENode.EQueue.pdb
+F:\Worspace\Int\src\Int.AC.Commands\bin\Debug\ENode.EQueue.xml
+F:\Worspace\Int\src\Int.AC.Commands\bin\Debug\EQueue.pdb
+F:\Worspace\Int\src\Int.AC.Commands\bin\Debug\EQueue.xml
+F:\Worspace\Int\src\Int.AC.Commands\obj\Debug\Int.AC.Commands.dll
+F:\Worspace\Int\src\Int.AC.Commands\obj\Debug\Int.AC.Commands.pdb

@@ -1,0 +1,134 @@
+﻿@model IEnumerable<Int.MobileUI.Models.ProjectListModel>
+@{
+    var tempList = Model.ToList();
+}
+
+<div class="page-content">
+    <div class="page-header">
+        <button class="btn btn-app btn-light btn-xs">
+            <i class="icon-tag bigger-160"></i>
+            项目管制表
+        </button>
+    </div><!-- /.page-header -->
+
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="table-responsive">
+                        <table id="project-table-1" class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>项目编号</th>
+                                    <th>项目所有人</th>
+                                    <th>项目类型</th>
+                                    <th>项目创建时间</th>
+                                    <th>项目阶段</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in tempList)
+                                {
+                                    var projectType = "其他项目";
+                                    if (item.ProjectType == "T1") { projectType = "培训项目"; }
+                                    else if (item.ProjectType == "T2") { projectType = "咨询项目"; }
+                                    var timeArr = item.ProjectCreatedTime.Split();
+                                    var displayTime = item.ProjectCreatedTime;
+                                    if (timeArr.Length > 4)
+                                    {
+                                        displayTime = timeArr[3] + "年" + timeArr[0] + "月" + timeArr[2] + "日" + timeArr[4];
+                                    }
+                                    var pState = (item.State).ToString();
+                                    if (item.State == 0) { pState = "需求单审核中"; }
+                                    else if (item.State == 1) { pState = "提案制作中"; }
+                                    else if (item.State == 2) { pState = "项目洽谈中"; }
+                                    else if (item.State == 3) { pState = "项目前期准备"; }
+                                    else if (item.State == 4) { pState = "项目实施中"; }
+                                    else if (item.State == 5) { pState = "项目实施完毕"; }
+                                    else if (item.State == 6) { pState = "资料归档中"; }
+                                    <tr>
+                                        <td>@item.ProjectId</td>
+                                        <td>@item.ProjectOwner</td>
+                                        <td>@projectType</td>
+                                        <td>@displayTime</td>
+                                        <td>@pState</td>
+                                        <td>
+                                            <button class="btn">
+                                                管制表
+                                                <i class="icon-arrow-right icon-on-right"></i>
+                                            </button>
+                                            @*<button class="btn">
+                                                完成
+                                                <i class="icon-arrow-right icon-on-right"></i>
+                                            </button>*@
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div><!-- /.table-responsive -->
+                </div><!-- /span -->
+            </div>
+        </div>
+    </div>
+    <div id="codetail">
+    </div>
+</div>
+
+@section Scripts{
+<script src="/assets/js/bootstrap-tag.min.js"></script>
+<script src="/assets/js/jquery.dataTables.min.js"></script>
+<script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
+<script type="text/javascript">
+    $(function ($) {
+        var projectList = $('tbody').children();
+        projectList.each(function (i, e) {
+            var controlData = $($(e).children()[5].firstElementChild);
+            var pId = $($(e).children()[0]).text();
+            controlData.on('click', function () { $('#codetail').load('/ControlTable/ControlItems', { projectId: pId }, function () { tableInit(pId) }) });
+        });
+        tableInit = function (pId) {
+            var aTable = $('#control-table-3').dataTable({
+                    "aoColumns": [{ "bSortable": true }, { "bSortable": true }, { "bSortable": false }, { "bSortable": false }, { "bSortable": false },
+                        { "bSortable": false, "bVisible": false, "bSearchable": true, "mRender": function (data, type, full) { return '<td>' + data + '</td>'; } }],
+                    "fnCreatedRow": function (nRow, aData, iDataIndex) { },
+                    "oLanguage": { sEmptyTable: '暂无项目管制信息', sInfo: '', sZeroRecords: '', sInfoEmpty: '', sInfoFiltered: '', sSearch: '查找:', "sLengthMenu": "显示 _MENU_ 记录" },
+                    "aLengthMenu": [5, 10]
+                });
+            $($('#control-table-3').children()[1]).on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) { $(this).toggleClass('selected'); }
+                else { aTable.$('tr.selected').removeClass('selected'); $(this).toggleClass('selected'); }
+            });
+            $($('#control-table-3').parent().parent().children()[2]).on('click', function () {//修改页面
+                var editC = aTable.$('tr.selected');
+                if (editC.length === 0) { alert('选择一项'); return false; }
+                var values = new Array();
+                $(aTable.fnGetData(editC[0]._DT_RowIndex)).each(function (i, e) { values.push(e);});
+                values.push(editC[0].rowIndex);
+                $('#modal-table-2').find('input:text').each(function (i, e) { $(e).val(values[i]) });
+            });
+            $('#concreate').on('click', function () {//添加
+                var temp = $(this).parent().parent().find('input:text');
+                jQuery.post('/ControlTable/AddItem', { projectId: pId, time: $(temp[0]).val(), type: $(temp[1]).val(), name: $(temp[2]).val(), content: $(temp[3]).val(), remark: $(temp[4]).val() }).success(function (rText, s) {
+                    if (rText.success) {
+                        aTable.fnAddData([$(temp[0]).val(), $(temp[1]).val(), $(temp[2]).val(), $(temp[3]).val(), $(temp[4]).val(),rText.Order]);
+                        aTable.fnDraw();
+                    }
+                });
+            });
+            $('#conmodify').on('click', function () {//修改
+                var temp = $(this).parent().parent().find('input:text');
+                jQuery.post('/ControlTable/ModifyItem', { projectId: pId, order: $(temp[5]).val(), time: $(temp[0]).val(), type: $(temp[1]).val(), name: $(temp[2]).val(), content: $(temp[3]).val(), remark: $(temp[4]).val() }).success(function (rText, s) {
+                    if (rText.success) {
+                        var onerow = $(aTable.get(0).rows[$(temp[temp.length - 1]).val()])[0].children;
+                        for (var i = 0; i < temp.length - 2; i++) { $(onerow[i]).text($(temp[i]).val()); }
+                    }
+                });
+            });
+        }
+    })
+</script>
+}

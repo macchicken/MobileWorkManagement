@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EQueue</name>
+    </assembly>
+    <members>
+        <member name="P:EQueue.Protocols.TopicConsumeInfo.ConsumerGroup">
+            <summary>消费者的分组
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.TopicConsumeInfo.Topic">
+            <summary>主题
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.TopicConsumeInfo.QueueId">
+            <summary>队列ID
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.TopicConsumeInfo.ConsumedOffset">
+            <summary>消费位置
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.TopicConsumeInfo.HasConsumer">
+            <summary>表示当前分组是否存在活跃（在线）的消费者
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.ConsumerInfo.ConsumerGroup">
+            <summary>消费者的分组
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.ConsumerInfo.ConsumerId">
+            <summary>消费者的ID
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.ConsumerInfo.Topic">
+            <summary>主题
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.ConsumerInfo.QueueId">
+            <summary>队列ID
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.ConsumerInfo.ConsumedOffset">
+            <summary>消费位置
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.TopicQueueInfo.Topic">
+            <summary>主题
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.TopicQueueInfo.QueueId">
+            <summary>队列ID
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.TopicQueueInfo.QueueCurrentOffset">
+            <summary>队列当前最大Offset
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.TopicQueueInfo.QueueMinOffset">
+            <summary>队列当前最小Offset
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.TopicQueueInfo.QueueMaxConsumedOffset">
+            <summary>队列当前被所有消费者都消费了的最大Offset
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.TopicQueueInfo.QueueMessageCount">
+            <summary>队列中的目前还存在的消息数
+            </summary>
+        </member>
+        <member name="P:EQueue.Protocols.TopicQueueInfo.Status">
+            <summary>队列的状态
+            </summary>
+        </member>
+    </members>
+</doc>

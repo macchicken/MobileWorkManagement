@@ -1,0 +1,134 @@
+﻿@model IEnumerable<Int.MobileUI.Models.ControlDataListModel>
+@{
+    var tempList2 = Model.ToList();
+}
+<link rel="stylesheet" href="/assets/css/jquery-ui-1.10.3.custom.min.css" />
+<style>
+    table tbody tr.even.selected {
+        background-color: #00ffff;
+    }
+
+    table tbody tr.odd.selected {
+        background-color: #00ffff;
+    }
+</style>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="table-responsive">
+            <table id="control-table-3" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>种类</th>
+                        <th>名称</th>
+                        <th>内容</th>
+                        <th>补充</th>
+                        <th>编号</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @if (tempList2 != null && tempList2.Count != 0)
+                        {
+                            foreach (var item in tempList2)
+                            {
+                                <tr>
+                                    <td>@item.Time</td>
+                                    <td>@item.Type</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Content</td>
+                                    <td>@item.Remark</td>
+                                    <td>@item.Order</td>
+                                </tr>
+                            }
+                        }
+                </tbody>
+            </table>
+            <a href="#modal-table" role="button" class="green" data-toggle="modal"> <i class="icon-edit"></i>添加</a>
+            <a href="#modal-table-2" role="button" class="green" data-toggle="modal"> <i class="icon-edit"></i>修改</a>
+        </div>
+        <div id="modal-table" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header no-padding">
+                        <div class="table-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                <span class="white">&times;</span>
+                            </button>
+                            &nbsp;
+                        </div>
+                    </div>
+
+                    <div class="modal-body no-padding">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="CONTime">时间</label>
+                            <input class="input-sm" type="text" id="CONTime" name="CONTime" />
+                            <label class="col-sm-1 control-label no-padding-right" for="CONType">种类</label>
+                            <input class="input-sm" type="text" id="CONType" name="CONType" />
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="CONName">名称</label>
+                            <input class="input-sm" type="text" id="CONName" name="CONName" />
+                            <label class="col-sm-1 control-label no-padding-right" for="CONContent">内容</label>
+                            <input class="input-sm" type="text" id="CONContent" name="CONContent" />
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="CONRemark">补充</label>
+                            <input class="input-sm" type="text" id="CONRemark" name="CONRemark" />
+                        </div>
+                    </div>
+
+                    <div class="modal-footer no-margin-top">
+                        <button class="btn" id="concreate" name="concreate">
+                            <i class="icon-arrow-right icon-on-right">添加</i>
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+        <div id="modal-table-2" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header no-padding">
+                        <div class="table-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                <span class="white">&times;</span>
+                            </button>
+                            &nbsp;
+                        </div>
+                    </div>
+
+                    <div class="modal-body no-padding">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="CONTime">时间</label>
+                            <input class="input-sm" type="text" id="CONTime" name="CONTime" />
+                            <label class="col-sm-1 control-label no-padding-right" for="CONType">种类</label>
+                            <input class="input-sm" type="text" id="CONType" name="CONType" />
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="CONName">名称</label>
+                            <input class="input-sm" type="text" id="CONName" name="CONName" />
+                            <label class="col-sm-1 control-label no-padding-right" for="CONContent">内容</label>
+                            <input class="input-sm" type="text" id="CONContent" name="CONContent" />
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="CONRemark">补充</label>
+                            <input class="input-sm" type="text" id="CONRemark" name="CONRemark" />
+                        </div>
+                        <input hidden type="text" id="CONorder" name="CONorder" />
+                        <input hidden type="text" />
+                    </div>
+
+                    <div class="modal-footer no-margin-top">
+                        <button class="btn" id="conmodify" name="conmodify">
+                            <i class="icon-arrow-right icon-on-right">修改</i>
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+        <!-- PAGE CONTENT ENDS -->
+    </div>
+</div>
+

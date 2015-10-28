@@ -1,0 +1,180 @@
+﻿<link rel="stylesheet" href="/assets/css/jquery-ui-1.10.3.custom.min.css" />
+<link rel="stylesheet" href="/assets/css/chosen.css" />
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            咨询项目
+        </h1>
+    </div><!-- /.page-header -->
+
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <form class="form-horizontal" id="consultProject" role="form" method="POST" action="/Demand/ConsultCreated">
+                <label class="col-sm-1 control-label no-padding-right">一、需求人基本信息</label>
+                <div class="space-4"></div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right"></label>
+                    <div>
+                        需求人姓名&nbsp;<input class="input-sm" type="text" id="Rname" name="Rname" placeholder="需求人姓名" />
+                        所属区域&nbsp;<input class="input-sm" type="text" id="Area" name="Area" placeholder="所属区域" />
+                    </div>
+                    <label class="col-sm-1 control-label no-padding-right"></label>
+                    <div>
+                        联系电话&nbsp;<input class="input-sm" type="text" id="RTelephone" name="RTelephone" placeholder="联系电话" />
+                        公司邮箱&nbsp;<input class="input-sm" type="text" id="REmail" name="REmail" placeholder="user@domain" />
+                    </div>
+                </div>
+                <div class="space-4"></div>
+                <label class="col-sm-1 control-label no-padding-right">二、客户基本信息</label>
+                <div class="space-4"></div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right"></label>
+                    <div>银行(或其他机构)&nbsp;<input class="input-sm" type="text" id="CusBank" name="CusBank" placeholder="银行" />
+                    分行&nbsp;<input class="input-sm" type="text" id="CusMainBranch" name="CusMainBranch" placeholder="分行" />
+                    </div>
+                    <label class="col-sm-1 control-label no-padding-right"></label>
+                    <div>支行&nbsp;<input class="input-sm" type="text" id="CusSubBranch" name="CusSubBranch" placeholder="支行" />
+                    联系人&nbsp;<input class="input-sm" type="text" id="CusContact" name="CusContact" placeholder="联系人" />
+                    </div>
+                    <label class="col-sm-1 control-label no-padding-right"></label>
+                    <label class="col-sm-1 control-label no-padding-right"></label>
+                    <div>联系电话&nbsp;<input class="input-sm" type="text" id="CusTelephone" name="CusTelephone" placeholder="客户电话" />
+                    邮箱&nbsp;<input class="input-sm" type="text" id="CusEmail" name="CusEmail" placeholder="客户邮箱" />
+                    </div>
+                </div>
+                <div class="space-4"></div>
+                <label class="col-sm-1 control-label no-padding-right">三、项目需求基本信息</label>
+                <div class="space-4"></div>
+                <div>
+                    <label class="col-sm-1 control-label no-padding-right"></label>
+                    项目需求类型&nbsp;<select class="width-15 chosen-select" id="ProjectRtype" name="ProjectRtype" data-placeholder="项目需求类型">
+                        <option value="juniornetwork">初级：网点服务标准化</option>
+                        <option value="internetwork">中级：网点营销流程化</option>
+                        <option value="seniornetwork">高级：网点产能精细化</option>
+                        <option value="mainbranch">分行零售战略</option>
+                        <option value="head">总行零售战略</option>
+                        <option value="other">其他</option>
+                    </select>
+                </div>
+                <div class="space-4"></div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right"></label>
+                    需求部门&nbsp;<input class="input-sm" type="text" id="RequireDept" name="RequireDept" placeholder="需求部门" />
+                    项目预计执行时长&nbsp;<input class="input-sm" type="text" id="Duration" name="Duration" placeholder="项目预计执行时长" />
+                </div>
+                <div class="space-4"></div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right"></label>
+                    <label class="col-sm-1 control-label no-padding-right"></label>
+                    收到需求的时间&nbsp;<input class="input-sm" type="text" id="ReceivedTime" name="ReceivedTime" placeholder="yyyy-mm-dd" />
+                    预计启动时间&nbsp;<input class="input-sm" type="text" id="ExpectTime" name="ExpectTime" placeholder="yyyy-mm-dd" />
+                </div>
+                <div class="space-4"></div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right"></label>
+                    <label class="col-sm-1 control-label no-padding-right"></label>
+                    涉及部门和岗位&nbsp;<input class="input-sm" type="text" id="Relvant" name="Relvant" placeholder="涉及部门和岗位" />
+                </div>
+                <div class="space-4"></div>
+                <div>
+                    <label for="ProjectContact">项目接触对象</label>
+                    <select class="width-15 chosen-select" id="ProjectContact" name="ProjectContact" data-placeholder="选择一个项目接触对象">
+                        <option value="requirmentDept">需求部门</option>
+                        <option value="hrDept">人力资源部</option>
+                        <option value="otherDept">其他（请说明）</option>
+                    </select>
+                </div>
+                <div class="space-4"></div>
+                <div>
+                    <label for="ProjectOrigin">项目需求来源</label>
+                    <select class="width-15 chosen-select" id="ProjectOrigin" name="ProjectOrigin" data-placeholder="项目需求来源">
+                        <option value="fromCus">客户主动提出</option>
+                        <option value="cusManager">客户经理主动接触发现</option>
+                        <option value="refer">公司领导（同事）转介</option>
+                        <option value="otherPerson">其他</option>
+                    </select>
+                </div>
+                <div class="space-4"></div>
+                <div>
+                    <label for="Rival">是否有竞争对手</label>
+                    <select class="width-15 chosen-select" id="Rival" name="Rival" data-placeholder="是否有竞争对手">
+                        <option value="yes">是</option>
+                        <option value="no">否</option>
+                        <option value="notClear">不了解</option>
+                    </select>
+                </div>
+                <div class="space-4"></div>
+                <div>
+                    <label for="Bid">是否需要进行招标</label>
+                    <select class="width-15 chosen-select" id="Bid" name="Bid" data-placeholder="是否需要进行招标">
+                        <option value="yes">是</option>
+                        <option value="no">否</option>
+                        <option value="notClear">不了解</option>
+                    </select>
+                    <label id="BidMessage"></label>
+                </div>
+                <div class="space-4"></div>
+                <div>
+                    <label for="ProjectPossi">项目成交可能性评估</label>
+                    <select class="width-20 chosen-select" id="ProjectPossi" name="ProjectPossi" data-placeholder="选择一个可能性估值">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <label id="ProjectPossiMessage"></label>
+                </div>
+                <div class="space-4"></div>
+                <div>
+                    <label for="CusProBudget">客户是否有项目预算</label>
+                    <select class="width-35 chosen-select" id="CusProBudget" name="CusProBudget" data-placeholder="客户是否有项目预算">
+                        <option value="yes">是</option>
+                        <option value="no">否</option>
+                        <option value="notClear">不了解</option>
+                    </select>
+                    <label id="CusProBudgetMessage"></label>
+                </div>
+                <div class="space-4"></div>
+                <div>
+                    <label for="ProjectEmergency">项目紧急程度</label>
+                    <select class="width-35 chosen-select" id="ProjectEmergency" name="ProjectEmergency" data-placeholder="选择一个紧急程度">
+                        <option value="T3">十分紧急 方案提供时间为T+3天</option>
+                        <option value="T1">紧急 方案提供时间为T+1周</option>
+                        <option value="T2">不紧急 方案提供时间为T+2周</option>
+                    </select>
+                    <label id="ProjectEmergencyMessage"></label>
+                </div>
+                <div class="space-4"></div>
+                <label class="col-sm-1 control-label no-padding-right">四、项目详细需求</label>
+                <div class="space-4"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="CourseSubject"> 项目目的描述 </label>
+                    <div class="col-sm-3">
+                        <input type="text" id="CourseSubject" name="CourseSubject" placeholder="项目目的描述" class="col-xs-10 col-sm-5" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="CourseDetail"> 需求详细描述 </label>
+                    <div class="col-sm-3">
+                        <input type="text" id="CourseDetail" name="CourseDetail" placeholder="需求详细描述" class="col-xs-10 col-sm-5" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="CourseOther"> 其他补充 </label>
+                    <div class="col-sm-3">
+                        <input type="text" id="CourseOther" name="CourseOther" placeholder="其他补充" class="col-xs-10 col-sm-5" />
+                    </div>
+                </div>
+            </form>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+

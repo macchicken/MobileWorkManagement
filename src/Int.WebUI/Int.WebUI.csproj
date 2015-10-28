@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E5B68266-5D69-4990-B227-95073A2A5E89}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Int.WebUI</RootNamespace>
+    <AssemblyName>Int.WebUI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.4.0\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Web">
+      <HintPath>..\packages\Autofac.Web.3.2.0\lib\net40\Autofac.Integration.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="CKEditor.NET">
+      <HintPath>..\bin\CKEditor.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="ECommon, Version=1.3.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ECommon.1.3.8\lib\net40\ECommon.dll</HintPath>
+    </Reference>
+    <Reference Include="ECommon.Autofac">
+      <HintPath>..\packages\ECommon.Autofac.1.3.8\lib\net40\ECommon.Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="ECommon.JsonNet">
+      <HintPath>..\packages\ECommon.JsonNet.1.3.8\lib\net40\ECommon.JsonNet.dll</HintPath>
+    </Reference>
+    <Reference Include="ECommon.Log4Net">
+      <HintPath>..\packages\ECommon.Log4Net.1.3.8\lib\net40\ECommon.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="ENode, Version=2.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ENode.2.5.2\lib\net40\ENode.dll</HintPath>
+    </Reference>
+    <Reference Include="ENode.EQueue, Version=1.5.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ENode.EQueue.1.5.6\lib\net40\ENode.EQueue.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EQueue, Version=1.3.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EQueue.1.3.5\lib\net40\EQueue.dll</HintPath>
+    </Reference>
+    <Reference Include="FineUI">
+      <HintPath>..\packages\FineUI.4.1.4\lib\FineUI.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqToExcel">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\LinqToExcel.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\Remotion.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\Remotion.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Interfaces">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\Remotion.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controls\PageAuthorityControl.ascx" />
+    <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="Main.aspx" />
+    <Content Include="packages.config" />
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Install.aspx" />
+    <Content Include="Sys\AuthorityList.aspx" />
+    <Content Include="Sys\AwardRole.aspx" />
+    <Content Include="Sys\ChangePwd.aspx" />
+    <Content Include="Sys\DepartmentList.aspx" />
+    <Content Include="Sys\DepartmentUser.aspx" />
+    <Content Include="Sys\MenuList.aspx" />
+    <Content Include="Sys\ModifyAuthority.aspx" />
+    <Content Include="Sys\ModifyDepartment.aspx" />
+    <Content Include="Sys\ModifyMenu.aspx" />
+    <Content Include="Sys\ModifyModule.aspx" />
+    <Content Include="Sys\ModifyRole.aspx" />
+    <Content Include="Sys\ModifyService.aspx" />
+    <Content Include="Sys\ModifyUser.aspx" />
+    <Content Include="Sys\ModuleList.aspx" />
+    <Content Include="Sys\NewAuthority.aspx" />
+    <Content Include="Sys\NewDepartment.aspx" />
+    <Content Include="Sys\NewMenu.aspx" />
+    <Content Include="Sys\NewModule.aspx" />
+    <Content Include="Sys\NewRole.aspx" />
+    <Content Include="Sys\NewService.aspx" />
+    <Content Include="Sys\NewUser.aspx" />
+    <Content Include="Sys\RoleAuthority.aspx" />
+    <Content Include="Sys\RoleList.aspx" />
+    <Content Include="Sys\RoleUser.aspx" />
+    <Content Include="Sys\SelectDepartment.aspx" />
+    <Content Include="Sys\SelectMenu.aspx" />
+    <Content Include="Sys\SelectModule.aspx" />
+    <Content Include="Sys\SelectUser.aspx" />
+    <Content Include="Sys\ServiceList.aspx" />
+    <Content Include="Sys\UserList.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Code\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Code\CollectionHelper.cs" />
+    <Compile Include="Code\CreateImage.cs" />
+    <Compile Include="Code\FileTypeHelper.cs" />
+    <Compile Include="Code\JsonSerialize.cs" />
+    <Compile Include="Code\LinqExtension.cs" />
+    <Compile Include="Code\WebPageAuthority.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\PageAuthorityControl.ascx.cs">
+      <DependentUpon>PageAuthorityControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\PageAuthorityControl.ascx.designer.cs">
+      <DependentUpon>PageAuthorityControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Code\ENodeExtensions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Install.aspx.cs">
+      <DependentUpon>Install.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Install.aspx.designer.cs">
+      <DependentUpon>Install.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Main.aspx.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main.aspx.designer.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\CommandTopicProvider.cs" />
+    <Compile Include="Providers\CommandTypeCodeProvider.cs" />
+    <Compile Include="Sys\AuthorityList.aspx.cs">
+      <DependentUpon>AuthorityList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\AuthorityList.aspx.designer.cs">
+      <DependentUpon>AuthorityList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\AwardRole.aspx.cs">
+      <DependentUpon>AwardRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\AwardRole.aspx.designer.cs">
+      <DependentUpon>AwardRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\ChangePwd.aspx.cs">
+      <DependentUpon>ChangePwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\ChangePwd.aspx.designer.cs">
+      <DependentUpon>ChangePwd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\DepartmentList.aspx.cs">
+      <DependentUpon>DepartmentList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\DepartmentList.aspx.designer.cs">
+      <DependentUpon>DepartmentList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\DepartmentUser.aspx.cs">
+      <DependentUpon>DepartmentUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\DepartmentUser.aspx.designer.cs">
+      <DependentUpon>DepartmentUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\MenuList.aspx.cs">
+      <DependentUpon>MenuList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\MenuList.aspx.designer.cs">
+      <DependentUpon>MenuList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\ModifyAuthority.aspx.cs">
+      <DependentUpon>ModifyAuthority.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\ModifyAuthority.aspx.designer.cs">
+      <DependentUpon>ModifyAuthority.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\ModifyDepartment.aspx.cs">
+      <DependentUpon>ModifyDepartment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\ModifyDepartment.aspx.designer.cs">
+      <DependentUpon>ModifyDepartment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\ModifyMenu.aspx.cs">
+      <DependentUpon>ModifyMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\ModifyMenu.aspx.designer.cs">
+      <DependentUpon>ModifyMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\ModifyModule.aspx.cs">
+      <DependentUpon>ModifyModule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\ModifyModule.aspx.designer.cs">
+      <DependentUpon>ModifyModule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\ModifyRole.aspx.cs">
+      <DependentUpon>ModifyRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\ModifyRole.aspx.designer.cs">
+      <DependentUpon>ModifyRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\ModifyService.aspx.cs">
+      <DependentUpon>ModifyService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\ModifyService.aspx.designer.cs">
+      <DependentUpon>ModifyService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\ModifyUser.aspx.cs">
+      <DependentUpon>ModifyUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\ModifyUser.aspx.designer.cs">
+      <DependentUpon>ModifyUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\ModuleList.aspx.cs">
+      <DependentUpon>ModuleList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\ModuleList.aspx.designer.cs">
+      <DependentUpon>ModuleList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\NewAuthority.aspx.cs">
+      <DependentUpon>NewAuthority.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\NewAuthority.aspx.designer.cs">
+      <DependentUpon>NewAuthority.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\NewDepartment.aspx.cs">
+      <DependentUpon>NewDepartment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\NewDepartment.aspx.designer.cs">
+      <DependentUpon>NewDepartment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\NewMenu.aspx.cs">
+      <DependentUpon>NewMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\NewMenu.aspx.designer.cs">
+      <DependentUpon>NewMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\NewModule.aspx.cs">
+      <DependentUpon>NewModule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\NewModule.aspx.designer.cs">
+      <DependentUpon>NewModule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\NewRole.aspx.cs">
+      <DependentUpon>NewRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\NewRole.aspx.designer.cs">
+      <DependentUpon>NewRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\NewService.aspx.cs">
+      <DependentUpon>NewService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\NewService.aspx.designer.cs">
+      <DependentUpon>NewService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\NewUser.aspx.cs">
+      <DependentUpon>NewUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\NewUser.aspx.designer.cs">
+      <DependentUpon>NewUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\RoleAuthority.aspx.cs">
+      <DependentUpon>RoleAuthority.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\RoleAuthority.aspx.designer.cs">
+      <DependentUpon>RoleAuthority.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\RoleList.aspx.cs">
+      <DependentUpon>RoleList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\RoleList.aspx.designer.cs">
+      <DependentUpon>RoleList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\RoleUser.aspx.cs">
+      <DependentUpon>RoleUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\RoleUser.aspx.designer.cs">
+      <DependentUpon>RoleUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\SelectDepartment.aspx.cs">
+      <DependentUpon>SelectDepartment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\SelectDepartment.aspx.designer.cs">
+      <DependentUpon>SelectDepartment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\SelectMenu.aspx.cs">
+      <DependentUpon>SelectMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\SelectMenu.aspx.designer.cs">
+      <DependentUpon>SelectMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\SelectModule.aspx.cs">
+      <DependentUpon>SelectModule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\SelectModule.aspx.designer.cs">
+      <DependentUpon>SelectModule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\SelectUser.aspx.cs">
+      <DependentUpon>SelectUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\SelectUser.aspx.designer.cs">
+      <DependentUpon>SelectUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\ServiceList.aspx.cs">
+      <DependentUpon>ServiceList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\ServiceList.aspx.designer.cs">
+      <DependentUpon>ServiceList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\UserList.aspx.cs">
+      <DependentUpon>UserList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sys\UserList.aspx.designer.cs">
+      <DependentUpon>UserList.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Int.AC.Commands\Int.AC.Commands.csproj">
+      <Project>{d14c45c1-63ce-42b3-9c3d-c0e53e00de2f}</Project>
+      <Name>Int.AC.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Int.AC.ReadModel\Int.AC.ReadModel.csproj">
+      <Project>{93787399-4ee2-411b-abfe-71a14f92ee1f}</Project>
+      <Name>Int.AC.ReadModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Int.Common\Int.Common.csproj">
+      <Project>{2a07d486-68ab-455c-883e-620fef0da3d9}</Project>
+      <Name>Int.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Int.Repository\Int.Repository.csproj">
+      <Project>{bb5c9b09-58f5-4845-ba1f-326133984bd0}</Project>
+      <Name>Int.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>13906</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:16180/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。启用“NuGet 程序包还原”可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

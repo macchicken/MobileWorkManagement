@@ -1,0 +1,13 @@
+﻿正在安装程序集“F:\Worspace\Int\src\Int.CommandService\bin\Debug\Int.CommandService.exe”。
+受影响的参数是:
+   logtoconsole = 
+   logfile = F:\Worspace\Int\src\Int.CommandService\bin\Debug\Int.CommandService.InstallLog
+   assemblypath = F:\Worspace\Int\src\Int.CommandService\bin\Debug\Int.CommandService.exe
+正在安装服务 Int.CommandService...
+已成功安装服务 Int.CommandService。
+正在日志 Application 中创建 EventLog 源 Int.CommandService...
+正在提交程序集“F:\Worspace\Int\src\Int.CommandService\bin\Debug\Int.CommandService.exe”。
+受影响的参数是:
+   logtoconsole = 
+   logfile = F:\Worspace\Int\src\Int.CommandService\bin\Debug\Int.CommandService.InstallLog
+   assemblypath = F:\Worspace\Int\src\Int.CommandService\bin\Debug\Int.CommandService.exe

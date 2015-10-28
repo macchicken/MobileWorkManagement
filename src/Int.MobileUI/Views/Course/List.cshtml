@@ -1,0 +1,209 @@
+﻿@model IEnumerable<Int.MobileUI.Models.CourseListModel>
+@{
+    if (Model != null) { var tempList = Model.ToList(); }
+}
+<style>
+    table tbody tr.even.selected {
+        background-color: #00ffff;
+    }
+
+    table tbody tr.odd.selected {
+        background-color: #00ffff;
+    }
+</style>
+
+<div class="page-content">
+    <div class="page-header">
+        <button class="btn btn-app btn-light btn-xs">
+            <i class="icon-tag bigger-160"></i>
+            课程列表
+        </button>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="table-responsive">
+                <table id="course-table" class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>名称</th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                            <th>地址</th>
+                            <th class="hidden-480"><i class="icon-time bigger-110 hidden-480"></i>状态</th>
+                        </tr>
+                    </thead>
+
+                    <tbody></tbody>
+                </table>
+                <a href="#modal-table" role="button" class="green" data-toggle="modal"> <i class="icon-edit"></i>添加新的课程</a>
+                <a href="#modal-table-2" role="button" class="green" data-toggle="modal"> <i class="icon-edit"></i>修改课程信息</a>
+            </div>
+            <div id="modal-table" class="modal fade" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header no-padding">
+                            <div class="table-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    <span class="white">&times;</span>
+                                </button>
+                                &nbsp;
+                            </div>
+                        </div>
+
+                        <div class="modal-body no-padding">
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="Name">名称</label>
+                                <input class="input-sm" type="text" id="Name" name="Name" />
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="BeginDate">开始时间</label>
+                                <input class="input-sm" type="text" id="BeginDate" name="BeginDate" />
+                                <label class="col-sm-1 control-label no-padding-right" for="EndDate">结束时间</label>
+                                <input class="input-sm" type="text" id="EndDate" name="EndDate" />
+                            </div>
+                            <label class="col-sm-1 control-label no-padding-right" for="Location">地址</label>
+                            <input class="input-sm" type="text" id="Location" name="Location" />
+                            <label class="col-sm-1 control-label no-padding-right" for="State">状态</label>
+                            <input class="input-sm" type="text" id="State" name="State" />
+                        </div>
+
+                        <div class="modal-footer no-margin-top">
+                            <button class="btn"><i class="icon-arrow-right icon-on-right">添加</i></button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- PAGE CONTENT ENDS -->
+            <div id="modal-table-2" class="modal fade" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header no-padding">
+                            <div class="table-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    <span class="white">&times;</span>
+                                </button>
+                                &nbsp;
+                            </div>
+                        </div>
+
+                        <div class="modal-body no-padding">
+                            <div class="form-group">
+                                <input hidden type="text" id="Ccode" name="Ccode" />
+                                <label class="col-sm-1 control-label no-padding-right" for="Name">名称</label>
+                                <input class="input-sm" type="text" id="Name" name="Name" />
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="BeginDate">开始时间</label>
+                                <input class="input-sm" type="text" id="BeginDate" name="BeginDate" />
+                                <label class="col-sm-1 control-label no-padding-right" for="EndDate">结束时间</label>
+                                <input class="input-sm" type="text" id="EndDate" name="EndDate" />
+                            </div>
+                            <label class="col-sm-1 control-label no-padding-right" for="Location">地址</label>
+                            <input class="input-sm" type="text" id="Location" name="Location" />
+                            <label class="col-sm-1 control-label no-padding-right" for="State">状态</label>
+                            <input class="input-sm" type="text" id="State" name="State" />
+                            <input hidden type="text" />
+                        </div>
+
+                        <div class="modal-footer no-margin-top">
+                            <button class="btn"><i class="icon-arrow-right icon-on-right">确定</i></button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- PAGE CONTENT ENDS -->
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script src="/assets/js/bootstrap-tag.min.js"></script>
+<script src="/assets/js/jquery.dataTables.min.js"></script>
+<script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
+<script src="/assets/js/lokijs.min.js"></script>
+<script type="text/javascript">
+    $(function ($) {
+        var lokitDb = new loki('secLokiDB');
+        var courseT = lokitDb.addCollection('course', ['ccode'], true);
+        var initCourse = function (CRTABLE) {
+            CRTABLE.insert({ ccode: 601, name: 'Bigdata in biz', begindate: '2014-12-01', enddate: '2014-12-05', location: 'shenzhen', state: '等待安排' });
+            CRTABLE.insert({ ccode: 602, name: 'Head Hunter', begindate: '2014-12-01', enddate: '2014-12-05', location: 'shenzhen', state: '进行中' });
+            CRTABLE.insert({ ccode: 603, name: 'Eco', begindate: '2014-12-01', enddate: '2014-12-05', location: 'shenzhen', state: '进行中' });
+            CRTABLE.insert({ ccode: 604, name: '电商', begindate: '2014-12-01', enddate: '2014-12-05', location: 'shenzhen', state: '进行中' });
+            CRTABLE.insert({ ccode: 605, name: '微商', begindate: '2014-12-01', enddate: '2014-12-05', location: 'shenzhen', state: '进行中' });
+            CRTABLE.insert({ ccode: 606, name: '数据挖掘', begindate: '2014-12-01', enddate: '2014-12-05', location: 'shenzhen', state: '进行中' });
+            CRTABLE.insert({ ccode: 607, name: '线上运营', begindate: '2014-12-01', enddate: '2014-12-05', location: 'shenzhen', state: '进行中' });
+        };
+        var courseTViewInit = function () {
+            var oTable1 = $('#course-table').dataTable({
+                "bStateSave": true, "bProcessing": true, "bRetrieve": true,
+                "aoColumns": [{ "bSortable": false }, { "bSortable": false }, { "bSortable": true }, { "bSortable": true }, { "bSortable": false }, null],
+                "oLanguage": { sEmptyTable: '暂无课程安排', sInfo: '', sZeroRecords: '', sInfoEmpty: '', sInfoFiltered: '', sSearch: '查找:', "sLengthMenu": "显示 _MENU_ 记录" },
+                "aLengthMenu": [5, 10]
+            });
+            return oTable1;
+        };
+        var loadDataIntoTableView = function (CRTABLE, callbackF) {
+            var objs = CRTABLE.data;
+            var objTbody = $($('#course-table').children()[1]);
+            for (oneobj in objs) {
+                var state = objs[oneobj].state;
+                var statelabel = 'warning';
+                if (state.indexOf('进行中') >= 0) { statelabel = 'info' }
+                objTbody.append('<tr><td>' + objs[oneobj].ccode + '</td><td><a href="#">' + objs[oneobj].name + '</a></td><td>' + objs[oneobj].begindate
+                    + '</td><td class="hidden-480">' + objs[oneobj].enddate + '</td><td>' + objs[oneobj].location + '</td><td class="hidden-480"><span class="label label-sm label-' + statelabel +
+                    '">' + state + '</span></td></tr>');
+            }
+            var rdTable = callbackF();
+            return rdTable;
+        };
+        initCourse(courseT);
+        var courseTView = loadDataIntoTableView(courseT, courseTViewInit);
+        $(courseTView.children()[1]).on('click', 'tr', function () {
+            if ($(this).hasClass('selected')) { $(this).toggleClass('selected'); }
+            else { courseTView.$('tr.selected').removeClass('selected'); $(this).toggleClass('selected'); }
+        });
+        $(courseTView.parent().parent()[0]).children().each(function (i, e) {
+            if (i > 0) {
+                if (i === 2) {$(e).on('click', function () {
+                        var editC = courseTView.$('tr.selected');
+                        if (editC.length === 0) { alert('选择一个课程'); return false; }
+                        var values = new Array();
+                        $(editC[0].children).each(function (i, e) { values.push($(e).text()) });
+                        values.push(editC[0].rowIndex);
+                        $('#modal-table-2').find('input:text').each(function (i, e) { $(e).val(values[i]) });
+                    })
+                }
+            }
+        });
+        $('#modal-table').find('button.btn').each(function (i, e) {
+            if (i == 0) {
+                $(e).on('click', function () {
+                    var temp = $(this).parent().parent().find('input:text');
+                    jQuery.post('/Course/AddCourse', { name: $(temp[0]).val(), begindate: $(temp[1]).val(), enddate: $(temp[2]).val(), location: $(temp[3]).val(), state: $(temp[4]).val() }).success(function (rText, s) {
+                        if (rText.success) {
+                            courseT.insert({ ccode: (600 + courseT.maxId + 1), name: rText.Name, begindate: rText.Begindate, enddate: rText.Enddate, location: rText.Location, state: rText.State });
+                            courseTView.fnAddData([600 + courseT.maxId, rText.Name, rText.Begindate, rText.Enddate, rText.Location, rText.State]);
+                            courseTView.fnDraw();
+                        }
+                    });
+                });
+            }
+        });
+        $('#modal-table-2').find('button.btn').each(function (i, e) {
+            if (i == 0) {
+                $(e).on('click', function () {
+                    var temp = $(this).parent().parent().find('input:text');
+                    jQuery.post('/Course/ModifyCourse', { ccode: $(temp[0]).val(), name: $(temp[1]).val(), begindate: $(temp[2]).val(), enddate: $(temp[3]).val(), location: $(temp[4]).val(), state: $(temp[5]).val() }).success(function (rText, s) {
+                        if (rText.success) {
+                            courseT.findAndUpdate(function (obj) { return obj.ccode == rText.Ccode }, function (obj) { obj.name = rText.Name; obj.begindate = rText.Begindate; obj.enddate = rText.Enddate; obj.location = rText.Location; obj.state = rText.State; return obj });
+                            var onerow = $(courseTView.get(0).rows[$(temp[6]).val()])[0].children;
+                            for (var i = 1; i < onerow.length; i++) { $(onerow[i]).text($(temp[i]).val()); }
+                        } else { console.log(rText.errMesg); }
+                    });
+                })
+            }
+        })
+    })
+</script>
+}

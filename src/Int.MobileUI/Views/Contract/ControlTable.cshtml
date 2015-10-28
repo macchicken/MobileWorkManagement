@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Int.MobileUI.Models.ControlDataListModel>
+@{
+    var tempList2 = Model.ToList();
+}
+<link rel="stylesheet" href="/assets/css/jquery-ui-1.10.3.custom.min.css" />
+<div class="row">
+    <div class="col-xs-12">
+        <h3 class="header smaller lighter blue">管制表</h3>
+
+        <div class="table-responsive">
+            <table id="control-table-2" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>种类</th>
+                        <th>名称</th>
+                        <th>内容</th>
+                        <th>补充</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @if (tempList2 != null && tempList2.Count != 0)
+                    {
+                        foreach (var item in tempList2)
+                        {
+                            <tr>
+                                <td>@item.Time</td>
+                                <td>@item.Type</td>
+                                <td>@item.Name</td>
+                                <td>@item.Content</td>
+                                <td>@item.Remark</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+﻿<link rel="stylesheet" href="/assets/css/jquery-ui-1.10.3.custom.min.css" />
+<link rel="stylesheet" href="/assets/css/chosen.css" />
+<div class="widget-body">
+    <div class="widget-main">
+        <div id="fuelux-wizard" class="row-fluid" data-target="#step-container">
+            <ul class="wizard-steps">
+                <li data-target="#step1" class="active">
+                    <span class="step">1</span>
+                    <span class="title">项目会议</span>
+                </li>
+
+                <li data-target="#step2">
+                    <span class="step">2</span>
+                    <span class="title">责任人制作提案</span>
+                </li>
+
+                <li data-target="#step3">
+                    <span class="step">3</span>
+                    <span class="title">责任人完成提案</span>
+                </li>
+
+                <li data-target="#step4">
+                    <span class="step">4</span>
+                    <span class="title">教研中心负责人审核</span>
+                </li>
+
+                <li data-target="#step5">
+                    <span class="step">5</span>
+                    <span class="title">提交市场部经手人</span>
+                </li>
+
+                <li data-target="#step6">
+                    <span class="step">6</span>
+                    <span class="title">提交给客户</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step-content row-fluid position-relative" id="step-container">
+            <div class="step-pane active" id="step1">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right">提案责任人召开项目会议</label>&nbsp;&nbsp;
+                    <input class="ace" type="checkbox" id="market" name="market" />
+                    <span class="lbl"> 市场部简述项目需求 </span>
+                    <input class="ace" type="checkbox" id="courseDevNe" name="courseDevNe" />
+                    <span class="lbl"> 教研中心问题沟通 </span>
+                    <input class="ace" type="checkbox" id="courseDevIdea" name="courseDevIdea" />
+                    <span class="lbl"> 教研中心初步构想 </span>
+                </div>
+            </div>
+            <div class="step-pane" id="step2">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right">责任人制作提案</label>&nbsp;&nbsp;
+                    <input class="ace" type="checkbox" id="arrange" name="arrange" />
+                    <span class="lbl"> 按紧急程度进行时间安排 </span>
+                </div>
+            </div>
+            <div class="step-pane" id="step3">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right">责任人完成提案</label>&nbsp;&nbsp;
+                    <input class="ace" type="checkbox" id="courseOutline" name="courseOutline" />
+                    <span class="lbl"> 课程主题、大纲 </span>
+                    <input class="ace" type="checkbox" id="teacher" name="teacher" />
+                    <span class="lbl"> 课程推荐老师 </span>
+                    <input class="ace" type="checkbox" id="quotation" name="quotation" />
+                    <span class="lbl"> 课程报价方案 </span>
+                </div>
+            </div>
+            <div class="step-pane" id="step4">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right">教研中心负责人审核</label>&nbsp;&nbsp;
+                    <input class="ace" type="checkbox" id="audited" name="audited" />
+                    <span class="lbl"> 审核完成 </span>
+                </div>
+            </div>
+            <div class="step-pane" id="step5">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right">提交市场部经手人</label>&nbsp;&nbsp;
+                    <input class="ace" type="checkbox" id="plan" name="plan" />
+                    <span class="lbl"> 方案内容规划简述 </span>
+                    <input class="ace" type="checkbox" id="report" name="report" />
+                    <span class="lbl"> 每周五定期进度汇报 </span>
+                </div>
+            </div>
+            <div class="step-pane" id="step6">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right">提交给客户</label>&nbsp;&nbsp;
+                    <input class="ace" type="checkbox" id="customer" name="customer" />
+                    <span class="lbl"> 提交给客户 </span>
+                    <div style="display:none"></div>
+                </div>
+                <button class="btn">提案完成<i class="icon-arrow-right icon-on-right"></i></button>
+                <div style="display:none"></div>
+            </div>
+        </div>
+        <div class="row-fluid wizard-actions">
+            <button class="btn">
+                更新流程<i class="icon-arrow-right icon-on-right"></i>
+            </button>
+            <button class="btn btn-prev">
+                <i class="icon-arrow-left"></i>
+                Prev
+            </button>
+
+            <button class="btn btn-success btn-next" data-last="Finish ">
+                Next
+                <i class="icon-arrow-right icon-on-right"></i>
+            </button>
+        </div>
+    </div><!-- /widget-main -->
+</div><!-- /widget-body -->
